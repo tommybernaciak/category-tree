@@ -22,17 +22,14 @@ export class CategoryUtils {
   };
 
   static getOrder = (category: Category): number => {
-    const title = category.Title;
-    if (!title) {
+    if (!category.Title) {
       return category.id;
     }
-    if (title.includes('#')) {
-      return Number(title.split('#')[0]);
-    }
-    if (!isNaN(Number(title))) {
-      return Number(title);
-    }
-    return category.id;
+    const title = CategoryUtils.isHomeCategory(category)
+      ? category.Title.split('#')[0]
+      : category.Title;
+
+    return isNaN(Number(title)) ? category.id : Number(title);
   };
 
   static isHomeCategory = (category: Category): boolean => {

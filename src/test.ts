@@ -238,6 +238,14 @@ test('CategoryUtils: getOrder() returns order from Title, if Title is a number w
   t.is(CategoryUtils.getOrder(category), 2);
 });
 
+test('CategoryUtils: getOrder() returns id as order, if Title is a string with #', (t) => {
+  const category = {
+    id: 9327,
+    Title: 'test#',
+  } as Category;
+  t.is(CategoryUtils.getOrder(category), 9327);
+});
+
 test('CategoryUtils: getImage() returns custom image url if children.length > 0', (t) => {
   const category = {
     id: 9327,
