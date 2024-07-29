@@ -16,7 +16,6 @@ export class UrlUtils {
     customUrl = 'https://testprovider.com',
     ex = 'jpg'
   ): string => {
-    // check if it is url
     if (!UrlUtils.isValidUrl(url)) {
       return '';
     }
